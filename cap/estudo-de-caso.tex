@@ -20,7 +20,7 @@ Neste trabalho, será analisada uma viga de seção T com as características mo
 
 O valor da força de protensão será dimensionado considerando o cabo reto e a excentricidade da protensão ($ \text{e}_{\text{p}} $) igual a zero.
 
-\section{Condições de cálculo e aplicação}
+\section{Condições de cálculo}
 
 O cálculo das características geométricas da seção, esforços solicitantes e tensões normais foram feitas com o programa de código aberto Scilab. O algoritmo utilizado pode ser visto no \autoref{script}. As condições limites utilizadas são:
 
@@ -36,6 +36,82 @@ A viga estará submetida às seguintes ações:
 	\item Ação variável (q): 12 kN/m.
 \end{alineas}
 
+O cálculo das características geométricas da seção da viga é efetuado pelo programa a partir da entrada de sua altura e largura. É importante notar que o programa desenvolvido para este estudo de caso pode efetuar os cálculos utilizando seções retangulares ou seções T (no caso das seções retangulares, basta que a largura e a espessura da mesa da viga sejam iguais a zero). São calculados apenas os esforços solicitantes característicos (momentos máximos e normal de protensão). O momento máximo permanente ($ \text{M}_{\text{g},\text{max}} $) e variável ($ \text{M}_{\text{q},\text{max}} $) é calculado conforme a \autoref{momento}.
+
+\begin{equation}
+	\label{momento}
+	\text{M}_{\text{max}} = \text{c} \cdot \frac{\text{l}^2}{8}
+\end{equation}
+
+Onde:
+
+\begin{alineas}[label=\textbullet]
+	\item c = ação - permanente ou variável (kN/m);
+	\item l = vão teórico (m).
+\end{alineas}
+
+A tensão permanente ($ \sigma_{\text{c,g,sup}} $) e variável ($ \sigma_{\text{c,q,sup}} $)  na borda superior da viga é calculada conforme a \autoref{tensao_sup} e a tensão permanente ($ \sigma_{\text{c,g,inf}} $) e variável ($ \sigma_{\text{c,q,inf}} $) na borda inferior da viga é calculada conforme a \autoref{tensao_inf}.
+
+\begin{equation}
+	\label{tensao_sup}
+	\sigma_{\text{c,sup}} = \frac{\text{M}_\text{max}}{\text{W}_\text{sup}}
+\end{equation}
+
+Onde:
+
+\begin{alineas}[label=\textbullet]
+	\item $ \text{M}_\text{max} $ = momento máximo (kNm);
+	\item $ \text{W}_\text{sup} $ = módulo de resistência à compressão superior.
+\end{alineas}
+
+\begin{equation}
+	\label{tensao_inf}
+	\sigma_{\text{c,inf}} = \frac{\text{M}_\text{max}}{\text{W}_\text{inf}}
+\end{equation}
+
+Onde:
+
+\begin{alineas}[label=\textbullet]
+	\item $ \text{M}_\text{max} $ = momento máximo {kNm};
+	\item $ \text{W}_\text{inf} $ = módulo de resistência à compressão inferior.
+\end{alineas}
+
+Por convenção, as tensões na borda superior são \textbf{negativas} e as tensões na borda inferior são \textbf{positivas}.
+
+A força normal de protensão é calculada conforme a \autoref{normal}.
+
+\begin{equation}
+	\label{normal}
+	\text{N}_\text{p} = - \sigma_{\text{c,g,inf}} - \sigma_{\text{c,q,inf}}
+\end{equation}
+
+Onde:
+
+\begin{alineas}[label=\textbullet]
+	\item $ \sigma_{\text{c,g,inf}} $ = tensão permanente na borda inferior;
+	\item $ \sigma_{\text{c,q,inf}} $ = tensão variável na borda inferior.
+\end{alineas}
+
+\begin{equation}
+	\label{superior}
+	\sigma_{\text{c,min,sup}} = \text{N}_\text{p} + \sigma_{\text{c,g,sup}} + \sigma_{\text{c,q,sup}}
+\end{equation}
+
+Onde:
+
+\begin{alineas}[label=\textbullet]
+	\item $ \text{N}_\text{p} $ = normal de protensão;
+	\item $ \sigma_{\text{c,g,sup}} $ = tensão permanente na borda superior;
+	\item $ \sigma_{\text{c,q,sup}} $ = tensão variável na borda superior.
+\end{alineas}
+
+Após calcular estes parâmetros, o programa faz duas verificações antes de prosseguir com a execução: avalia se a tensão na fibra superior e a força normal de protensão são menores que a compressão máxima permitida (0,6 $\cdot$ fck). A tensão na fibra superior é calculada conforme a \autoref{superior}.
+
+
+A partir deste ponto, o programa passa a fazer iterações, aumentando o valor do vão teórico de 0,5 m em 0,5 m, até que a protensão aplicada na viga seja pelo menos igual ou maior que 90\% da compressão máxima permitida. Na segunda parte do estudo de caso, a partir de um vão teórico fixo e uma seção transversal inicial, são feitas algumas iterações, em que, no começo de cada iteração, a seção transversal da viga é aumentada em 5\%.  O resultado é mostrado quando atinge-se uma seção transversal em que a viga atende aos critérios estabelecidos (tensão na fibra superior e força normal de protensão menores que a compressão máxima  permitida).
+
+\section{Aplicação}
+
 Com os parâmetros de entrada no algoritmo já definidos, foi gerada a \autoref{tabelafck}, onde pode se observar o crescimento do vão teórico que a viga pode vencer ao se aumentar o fck do concreto e a força de protensão aplicada, ainda atendendo as condições limite definidas e sem alterar a sua seção transversal. O  gráfico da \autoref{graficofck} mostra a relação entre o aumento do fck e o vão que uma mesma viga pode vencer.
 
 É importante notar que a rigidez de uma viga feita com CUAD tende a ser maior que a de uma viga feita com concreto convencional, devido ao seu módulo de elasticidade maior: 50 GPa (valor preliminar que pode ser considerado sem testes, conforme as recomendações da AFGC), mas que pode chegar a 70 GPa, por conta das fibras adicionadas, contra um módulo de elasticidade de 56 GPa na condição mais favorável (agregados de basalto e diabásio) para concretos com de até $ \text{fck} = 90 \quad \text{MPa}  $. Ainda assim, uma peça estrutural muito esbelta sobre um vão muito grande pode gerar deformações e fissuras excessivas. As recomendações da \citeonline{AFGC} contém as instruções necessárias para fazer estas verificações no CUAD.
@@ -50,7 +126,7 @@ Com os parâmetros de entrada no algoritmo já definidos, foi gerada a \autoref{
 
 %E importante notar que a utilização de seções reduzidas em vigas para vencer grandes vãos pode ser problemática do ponte de vista das deformação da peça. Com $ fck = 40 \text{MPa}$, a rigidez da viga estudada é igual $ kN \cdot m^2 $. Conforme o $ fck $ e o vão teórico aumentam, enquanto a seção transversal
 
-\begin{table}[htb]
+\begin{table}[H]
 	\IBGEtab{%
 		\caption{Aumento do fck relacionado ao aumento do vão que a mesma viga pode vencer}
 		\label{tabelafck}
