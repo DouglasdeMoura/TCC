@@ -1,0 +1,26 @@
+% Copyright (C) 2013 Alexandre Hannud Abdo <abdo@member.fsf.org>
+% This work is licensed under the GNU GPL, version 3 or (at your option)
+% any later version. A copy of the license can be found here:
+% http://www.gnu.org/licenses/gpl
+
+% Se quiser compilar este teste mova-o para o mesmo nível da pasta
+% 'cclicense' e siga as instruções do arquivo README.
+
+\documentclass[a4paper, 12pt, titlepage]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{epsfig}
+\usepackage[full]{textcomp}
+\usepackage[brazil]{babel}
+\usepackage{url}
+
+\usepackage{./cclicense/xmpincl/xmpincl}
+\includexmp{./cclicense/metadata}
+
+\begin{document}
+\pagestyle{empty}
+\newpage
+\input{./cclicense/license}
+\CcLicenseBySaBr{1987}{Princesa Vespa}
+\newpage
+\pagestyle{plain}
+\end{document}

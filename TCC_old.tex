@@ -1,0 +1,679 @@
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% Modelo de TCC baseado no abnTeX2 para a Universidade Anhembi Morumbi
+%
+% Configurações iniciais
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	twoside,			% para impressão em recto e verso. Oposto a oneside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% PACOTES E CONFIGURAÇÕES 
+% ---
+
+% --- Fontes ---
+\usepackage[utf8]{inputenc}		% Codificação do documento (conversão automática dos acentos)
+\usepackage{times}			    % Usa a fonte Nimbus Roman (clone da Times New Roman)
+\usepackage{mathptmx}           % Suporte à notação matemática com Nimbus Roman
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+  \renewcommand{\sfdefault}{\rmdefault} % Títulos e texto com a mesma fonte serifada
+%\usepackage{fontspec}          % Para usar a fonte Times New Roman, comente as 4 linhas acima,
+%\setmainfont{Times New Roman}  % mas fique avisado que não fica muito bom.
+% --- /Fontes ---
+
+\usepackage{lastpage}			% Usado pela Ficha catalográfica
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de elementos gráficos
+  \graphicspath{ {img/} }   % Define o diretório das imagens
+%\usepackage{epsfig}            % Incluir Postscript encapsulado (prefira o graphicx)
+\usepackage{microtype} 			% Melhorias de justificação
+\usepackage{textgreek}          % Suporte a letras gregas
+\usepackage{nicefrac}           % Frações na linha
+\usepackage{tabulary}           % Ambiente de tabelas
+\usepackage{amsmath}            % Melhorias tipográficas para escrita matemática
+\usepackage{amssymb}            % Mais símbolos matemáticos
+\usepackage[export]{adjustbox}  % Para inserir imagens no tamanho máximo disponível, sem escalar
+\usepackage{setspace}           % Determina o espaçamento entre linhas
+\usepackage{gensymb}            % Símbolos genéricos para modo texto e modo matemático
+\usepackage{anhembi-morumbi}    % Customização da capa do TCC para a Anhembi Morumbi
+\usepackage{url}                % Verbatim com quebras de linha de URL
+\usepackage{booktabs}           % Melhora a qualidade de impressão das tabelas
+%\usepackage{xmpincl}            % Inclua dados de eXtensible Metadata Platform
+  %\includexmp{cclicense/metadata} % Template da licença Creative Commons
+%\usepackage[full]{textcomp}    % Suporte para fontes Text Companion
+%\usepackage{ifthen}            % Comandos condicionais em documentos LaTeX
+%\usepackage{multicol}          % Junta colunas em tabelas
+%\usepackage{multirow}          % Junta linhas em tabelas
+
+% --- Pacotes de citações ---
+\usepackage{hyperref}           % Links de referências cruzadas
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibliografia
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+  % Configurações do pacote backref
+  % Usado sem a opção hyperpageref de backref
+  \renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+  % Texto padrão antes do número das páginas
+  \renewcommand{\backref}{}
+  % Define os textos da citação
+  \renewcommand*{\backrefalt}[4]{
+    \ifcase #1
+	  Nenhuma citação no texto.
+	\or
+	  Citado na página #2.
+	\else
+	  Citado #1 vezes nas páginas #2.
+	\fi}
+
+% --- /Pacotes de citações ---
+
+% --- Pacotes para lista de abreviaturas e siglas e lista de símbolos ---
+%% Utilize A para abreviaturas e S para símbolos
+\usepackage{nomencl}
+  \renewcommand{\nomname}{\listadesiglasname}
+\usepackage{etoolbox}
+
+\renewcommand{\nomgroup}[1]{
+  \ifstrequal{#1}{S}{
+    \cleardoublepage \pretextualchapter{\listadesimbolosname}
+  }
+}
+\makenomenclature
+% --- /Pacotes para lista de abreviaturas e siglas e lista de símpolos ---
+
+% --- Inserir gráficos e tabelas dentro de sua própria seção ---
+\usepackage[section]{placeins}  % Evita o posicionamento de imagens fora de sua própria seção
+  \makeatletter
+  \AtBeginDocument{%
+    \expandafter\renewcommand\expandafter\subsection\expandafter{%
+      \expandafter\@fb@secFB\subsection
+    }%
+  }
+\makeatother
+% --- /Inserir gráficos e tabelas dentro de sua própria seção ---
+
+%\renewcommand{\footnotesize}{\small}
+
+% ---
+% DADOS DO TRABALHO
+% ---
+\titulo{Concreto de ultra alto desempenho: introdução, conceitos e aplicações}
+\autor{Douglas Araujo de Moura\\ Markus Vinícius Matos Ferreira\\ Daniel Lopes Pereira}
+\local{São Paulo}
+\data{2017}
+\orientador{Msc. Rafaela Amaral Pinheiro}
+%\coorientador{Equipe \abnTeX}
+\instituicao{Universidade Anhembi Morumbi}
+\tipotrabalho{TCC}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho de Conclusão de Curso apresentado como exigência parcial para a obtenção do título de Graduação do Curso de Engenharia Civil da Universidade Anhembi Morumbi.}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={CUAD} {UHPC} {Ultra High Performance Concrete} {Concreto de Ultra Alto Desempenho} {ponte} {obra de arte} {laje maciça} {pavimentação} {trabalho acadêmico} {TCC} {engenharia} {engenharia civil}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=black,          	% color of internal links
+    	citecolor=black,        		% color of links to bibliography
+    	filecolor=black,      	% color of file links
+		urlcolor=black,
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+\imprimirfolhaderosto
+% ---
+
+% ---
+% Inserir a ficha bibliografica
+% ---
+
+% Isto é um exemplo de Ficha Catalográfica, ou ``Dados internacionais de
+% catalogação-na-publicação''. Você pode utilizar este modelo como referência. 
+% Porém, provavelmente a biblioteca da sua universidade lhe fornecerá um PDF
+% com a ficha catalográfica definitiva após a defesa do trabalho. Quando estiver
+% com o documento, salve-o como PDF no diretório do seu projeto e substitua todo
+% o conteúdo de implementação deste arquivo pelo comando abaixo:
+%
+% \begin{fichacatalografica}
+%     \includepdf{fig_ficha_catalografica.pdf}
+% \end{fichacatalografica}
+
+\begin{fichacatalografica}
+	\sffamily
+	\vspace*{\fill}					% Posição vertical
+	\begin{center}					% Minipage Centralizado
+	\fbox{\begin{minipage}[c][8cm]{13.5cm}		% Largura
+	\small
+	\imprimirautor
+	
+	\hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
+	\imprimirlocal, \imprimirdata-
+	
+	\hspace{0.5cm} \pageref{LastPage} p. : il. (algumas color.) ; 30 cm.\\
+	
+	\hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador\\
+	
+	\hspace{0.5cm}
+	\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimirinstituicao,
+	\imprimirdata.}\\
+	
+	\hspace{0.5cm}
+		1. Concreto de ultra alto desempenho.
+		2. CUAD.
+		I. Ferreira, Markus Vinícius Matos.
+		II. Pereira, Daniel Lopes.
+		I. Pinheiro, Rafaela Amaral.
+		II. \imprimirinstituicao.
+		III. Escola de Engenharia e Tecnologia.
+		IV. \imprimirtitulo 			
+	\end{minipage}}
+	\end{center}
+\end{fichacatalografica}
+% ---
+
+% ---
+% Inserir folha de aprovação
+% ---
+
+% Isto é um exemplo de Folha de aprovação, elemento obrigatório da NBR
+% 14724/2011 (seção 4.2.1.3). Você pode utilizar este modelo até a aprovação
+% do trabalho. Após isso, substitua todo o conteúdo deste arquivo por uma
+% imagem da página assinada pela banca com o comando abaixo:
+%
+% \includepdf{folhadeaprovacao_final.pdf}
+%
+\begin{folhadeaprovacao}
+
+  \begin{center}
+    {\ABNTEXchapterfont\large\imprimirautor}
+
+    \vspace*{\fill}\vspace*{\fill}
+    \begin{center}
+      \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+    \end{center}
+    \vspace*{\fill}
+    
+    \hspace{.45\textwidth}
+    \begin{minipage}{.5\textwidth}
+        \imprimirpreambulo
+    \end{minipage}%
+    \vspace*{\fill}
+   \end{center}
+
+   \begin{center}
+     Trabalho \line(1,0){100}~em:~\line(1,0){20}~de agosto de 2017.
+   \end{center}
+
+
+   \assinatura{\textbf{\imprimirorientador} \\ Orientador} 
+   \assinatura{\textbf{Professor} \\ Convidado 1}
+   
+   %\assinatura{\textbf{Professor} \\ Convidado 2}
+   %\assinatura{\textbf{Professor} \\ Convidado 3}
+   %\assinatura{\textbf{Professor} \\ Convidado 4}
+   
+   \vspace{1.5cm}
+   \noindent
+   Comentários: \line(1,0){394} \\
+   \line(1,0){460} \\
+   \line(1,0){460} \\
+   \line(1,0){460}
+      
+   \begin{center}
+    \vspace*{0.5cm}
+    {\large\imprimirlocal}
+    \par
+    {\large\imprimirdata}
+    \vspace*{1cm}
+  \end{center}
+  
+\end{folhadeaprovacao}
+% ---
+
+% ---
+% Dedicatória
+% ---
+%\begin{dedicatoria}
+%   \vspace*{\fill}
+%   \centering
+%   \noindent
+%   \textit{ Este trabalho é dedicado às crianças adultas que,\\
+%   quando pequenas, sonharam em se tornar cientistas.} \vspace*{\fill}
+%\end{dedicatoria}
+% ---
+% ---
+% Licença
+% ---
+%\newpage
+%\input{cclicense/license}
+%\CcLicenseByBr{2017}{Douglas Araujo de Moura, Markus Vinicius Matos Ferreira e Daniel Lopes Pereira}
+%\newpage
+% ---
+% Agradecimentos
+% ---
+\begin{agradecimentos}
+Muitas pessoas contribuíram direta e indiretamente para a execução deste trabalho. Agradecemos especialmente à nossa orientadora Rafaela Amaral pelo suporte prestado a qualquer momento por meios eletrônicos e ao professor Elivaldo Elenildo da Silva pela ajuda com o projeto da ponte.
+
+Ao professor Claydson Moro por emprestar seu material pessoal para cálculo de pontes.
+
+Ao engenheiro americano Brian Keierleber por enviar prontamente por email informações relevantes à ponte Jakway Park, na qual trabalhou diretamente.
+
+Às nossas companheiras e filhos\footnote{Só o Douglas tem filhos.} pelo carinho, compreensão e suporte durante o desenvolvimento deste trabalho.
+
+Agradecemos também à Anielle Guedes, CEO da Urban 3D S/A pela ajuda prestada nas últimas horas de desenvolvimento deste trabalho, cruciais para o seu resultado.
+
+\end{agradecimentos}
+% ---
+
+% ---
+% Epígrafe
+% ---
+\begin{epigrafe}
+    \vspace*{\fill}
+	\begin{flushright}
+		\textit{``Em algum lugar, algo incrível\\
+		 está esperando para ser descoberto''.  \\
+		(Carl Sagan)}
+	\end{flushright}
+\end{epigrafe}
+% ---
+
+% ---
+% RESUMOS
+% ---
+
+% resumo em português
+\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
+\begin{resumo}
+ Para atender novos e superiores requisitos de resistência e durabilidade, o concreto de ultra alto desempenho (CUAD) vem sendo desenvolvido nas últimas décadas. Utilizando agregados finamente selecionados, o material pode resistir a solicitações de compressão de 150 MPa à 800 MPa, por conta de seu denso empacotamento de partículas adquirido devido a uma baixíssima relação água/aglomerante, atingida com o uso massivo de superplastificantes e agregados finos ($ \oslash \leq $ 0,20 mm), além da adição de fibras, gerando um material com certa  ductilidade e de baixa porosidade, resistente à ataques químicos. Possui alta trabalhabilidade, comparável a de uma argamassa. Existem diversas misturas e métodos de produção de CUAD, muitas delas patenteadas. Ainda não existe uma normatização do seu uso, mas vários países já publicaram recomendações de como deve ser desenvolvido um projeto com CUAD, como a França, o Japão e os EUA. O estudo de caso visa analisar uma ponte em CUAD no município de Buchanan, nos EUA (ponte Jakway Park). A solução em CUAD adotada pelo município de Buchanan mostrou-se de rápida execução e deve demandar poucos recursos para sua manutenção, porém sua execução foi difícil, mesmo tendo sido feita em uma fábrica, já que é difícil controlar seus índices de desempenho, além do seu preço elevado, por conta do pioneirismo do projeto (desenvolvimento da seção \textpi) e alto consumo de concreto. O CUAD mostrou-se um material com muito potencial de desenvolvimento, capaz de atender a soluções de construção inovadoras, as quais o concreto convencional e mesmo o concreto de alto desempenho não atendem.
+ 
+ \textbf{Reorganizar este trecho, melhorar a qualidade do texto e da escrita}
+
+ \textcolor{red}{\textbf{Palavras-chave}: concreto de ultra alto desempenho. CUAD. ponte de concreto armado.}
+ 
+ % De acordo com \citeonline[3.1-3.2]{NBR6028:2003}
+\end{resumo}
+% resumo em inglês
+\begin{resumo}[Abstract]
+ \begin{otherlanguage*}{english}
+     In order to attend new and enhanced requirements of strength and durability, the ultra high performance concrete (UHPC) is being developed in the past few decades. Using fine selected agreggates, the material can withstand compression strength ranging from 150 MPa to 800 MPa, due its dense particle packing acquired with a very low water/aglomerant ratio, achieved with the massive use of superplasticizers and fine aggregates ($ \oslash \leq $ 0,20 mm), besides the addition of fibers, generating a material with a certain ductility and low porosity, resistant to chemical  attacks. It has high workability, comparable to that of a mortar. There are several mixtures and methods of producing UHPC, many of which are patented. There is still no standardization of its use, but several countries have already published recommendations on how to develop a project with UHPC, like France, Japan and the USA. The case study compares a bridge solution in reinforced concrete to the Buchanan county, USA, where the middle span of the Jakway Park bridge is made of UHPC. A comparison is made between the two methods in order to show the strengths and weaknesses of each. The UHPC solution adopted by the Buchanan county Ppoved to be quick to execute and should require few resources for its maintenance, but of difficult execution, even though it was made in a factory, since it is difficult to control its performance indexes, in addition to its high price, due to the pioneering of the project (development of the PI section) and high consumption of concrete. However, the solution in reinforced concrete proposed in this work, proved to be difficult to execute and high consumption of concrete (84 m\textsuperscript{3}), requiring a complex installation of shapes to shape it on the river. The UHPC has proved to be a material with a lot of development potential, capable of meeting innovative construction solutions, which conventional concrete and even high performance concrete do not meet.
+
+   \vspace{\onelineskip}
+ 
+   \noindent 
+   \textbf{Keywords}: ultra high performance concrete. UHPC. reinforced concrete bridge.
+ \end{otherlanguage*}
+\end{resumo}
+
+% resumo em francês 
+%\begin{resumo}[Résumé]
+% \begin{otherlanguage*}{french}
+%    Il s'agit d'un résumé en français.
+ 
+%   \textbf{Mots-clés}: latex. abntex. publication de textes.
+% \end{otherlanguage*}
+%\end{resumo}
+
+% resumo em espanhol
+%\begin{resumo}[Resumen]
+% \begin{otherlanguage*}{spanish}
+%   Este es el resumen en español.
+  
+%   \textbf{Palabras clave}: latex. abntex. publicación de textos.
+% \end{otherlanguage*}
+%\end{resumo}
+% ---
+
+% ---
+% inserir lista de ilustrações
+% ---
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+% ---
+
+% ---
+% inserir lista de tabelas
+% ---
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+% ---
+
+% ---
+% inserir lista de abreviaturas e siglas
+% ---
+
+\pdfbookmark[0]{\nomname}{las}
+\printnomenclature[3cm]
+\cleardoublepage
+% ---
+
+% ---
+% inserir lista de símbolos
+% ---
+%\begin{simbolos}
+%  \item[ $ \pi $ ] Letra grega Pi
+%  \item[ $ \degree $C ] Graus Celsius
+%  \item[ kN ] quilonewton
+%  \item[ kN.m ] quilonewton metro
+%  \item[ kN/m$^2 $ ] quilonewton por metro quadrado
+%  \item[ kN/m$^3 $ ] quilonewton por metro cúbico
+%  \item[ m ] metro
+%  \item[ m$^2 $ ] metro quadrado
+%  \item[ m$^3 $ ] metro cúbico
+%  \item[ MPa ] megapascal
+%\end{simbolos}
+% ---
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+% ----------------------------------------------------------
+% Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
+% ----------------------------------------------------------
+\setcounter{page}{1}
+
+\chapter*[Introdução]{Introdução}
+\addcontentsline{toc}{chapter}{Introdução}
+% ----------------------------------------------------------
+
+CUAD (concreto de ultra alto desempenho) é o nome dado a um classe de concretos com desempenho e durabilidade superiores ao do CAD (concreto de alto desempenho). Trata-se de uma classe de material construtivo que busca ter um desempenho semelhante ao de rochas naturais e uma alternativa viável ao aço, com a vantagem de ser facilmente moldado e a capacidade de adquirir geometrias variadas.
+
+Desenvolvido a partir de uma nova abordagem para com o concreto, a fabricação do CUAD envolve o uso de agregados mais finos, mínima adição de água, grande quantidade de aditivos superplastificantes, controle apurado no processo de cura térmica e uso de fibras poliméricas ou metálicas. Desse modo, o material pode resistir a esforços de compressão de 150 MPa a 800 MPa e uma resistência de tração na flexão de 10 MPa a 102 MPa, a depender das fibras utilizadas no processo de fabricação. É importante ressaltar que não ocorre uma  aumento no módulo de elasticidade em função do aumento das resistências do concreto.
+
+Mesmo ainda sendo um produto caro por conta da baixa demanda e alto consumo de cimento em sua composição (quase três vezes maior que o do concreto convencional), várias obras ao redor do mundo já desfrutam de todas as suas vantagens, que incluem maior esbeltez das estruturas, menor permeabilidade (portanto menor vulnerabilidade à ataques químicos) e valores de resistência a compressão que podem ser 10 vezes maiores que a do concreto convencional.
+
+A pesquisa apresentada neste trabalho busca introduzir ao leitor os fundamentos, características e diferentes tipos de CUAD, mostrando seus prós e contras para sua utilização. Ainda não existem normas que cubram este novo tipo de concreto (apenas recomendações emitidas por alguns países), e o comportamento do material é intensamente estudado em vários centros de pesquisa pelo mundo.
+
+Inicia-se este trabalho com um histórico do desenvolvimento da classe de concretos que podem ser classificados como CUAD, as principais linhas de pesquisa estudadas pelo mundo. Em seguida, cita-se a sua aplicação em obras variadas.
+
+\include{cap/secao-inicial}
+\include{cap/concreto}
+\include{cap/cuad}
+\include{cap/projetos-cuad}
+%\include{cap/projeto-ponte}
+%\include{cap/estudo-de-caso}
+
+% Finaliza a parte no bookmark do PDF
+% para que se inicie o bookmark na raiz
+% e adiciona espaço de parte no Sumário
+% ----------------------------------------------------------
+\phantompart
+
+% ---
+% Conclusão
+% ---
+\chapter{Considerações finais}
+% ---
+
+O concreto de ultra alto desempenho é um material inovador, o qual também exige a aplicação de técnicas inovadoras para sua aplicação. Suportando solicitações de compressão de 150 MPa a 800 MPa e possuindo uma resistência a tração que pode chegar a 10 vezes o valor do concreto convencional, por conta da adição de fibras, tem potencial de permitir que os projetistas desenvolvam edificações e obras de artes mais esbeltas, o que, consequentemente, demandaria menos mão de obra e aceleraria o tempo de execução e entrega dos empreendimentos.
+
+Seu uso é apropriado processos industrializados de construção, sendo extremamente difícil controlar sua qualidade e desempenho fora de ambientes controlado, vide a precaução dos projetistas da ponte Jakway Park de considerar uma resistência à compressão de 148 MPa por conta do método utilizado para misturar o concreto com as fibras. Apesar do seu custo elevado, ele pode ser equilibrado com outros custos relacionados à construção, como o transporte dos elementos estruturais e dos materiais construtivos, tempo de mobilização do canteiro de obras e quantidade de trabalhadores necessária para a execução do projeto, além de exigir uma gasto menor em manutenção a médio e longo prazo.
+
+O material já está disponível no Brasil, porém, até agora, só foi aplicado para fins arquitetônicos. No mundo, diversos empreendimentos, entre pontes, passarelas e edifícios já utilizam o CUAD de maneira estrutural, aproveitando seu desempenho.
+
+A partir do estudo efetuado, vê-se que ainda existe muito espaço para desenvolvimento de como utilizar o CUAD da melhor maneira possível, aproveitando ao máximo o desempenho que ele oferece e diminuir os seus custos de produção, de modo que ele venha a se tornar um material vai rotineiro nas construções civis.
+
+\chapter{Recomendações}
+
+Bora terminar essa porra.
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+% ----------------------------------------------------------
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{referencias-bibliograficas}
+
+% ----------------------------------------------------------
+% Glossário
+% ----------------------------------------------------------
+%
+% Consulte o manual da classe abntex2 para orientações sobre o glossário.
+%
+%\glossary
+
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+
+% ---
+% Inicia os apêndices
+% ---
+%\begin{apendicesenv}
+%
+% Imprime uma página indicando o início dos apêndices
+%\partapendices
+%
+%\chapter{Memorial de cálculo da ponte}\label{chap:memorial}
+%\section{Parâmetros de entrada}
+%
+%$ \ell_x/a = 7,80 $
+%
+%$ t/a = 0,16 $
+%
+%$ \ell_y/\ell_x = 0,48 $
+%
+%Condições de apoio:
+%
+%\begin{figure}[htb]
+%	\begin{center}
+%	    \includegraphics[max width=\textwidth]{condicoes-apoio.png}
+%	\end{center}
+%\end{figure}
+%
+%Direção de tráfego: $ \updownarrow $
+%
+%Tabela: 13
+%
+%\section{Esforços devidos às cargas móveis}
+%
+%\subsection{Mxm}
+%
+%\begin{figure}[!htb]
+%	\begin{center}
+%	    \includegraphics[max width=\textwidth]{memorial-tab-1.png}
+%	\end{center}
+%\end{figure}
+%
+%ML=0,63\\
+%Mp=0,75\\
+%Mp'=1,65\\
+%Mxm= φ x (P x ML + p x Mp + p' x Mp')\\
+%Mxm=1,35 x (75,0 x 0,63 + 5,0 x 0,75 + 5,0 x 1,65)\\
+%Mxm=80,38 kN.m/m
+%
+%\subsection{Mym}
+%
+%\begin{figure}[!htb]
+%	\begin{center}
+%	    \includegraphics[max width=\textwidth]{memorial-tab-2.png}
+%	\end{center}
+%\end{figure}
+%
+%ML=2,89
+%
+%Mp=4,24\\
+%Mp'=19,66\\
+%Mym= φ x (P x ML + p x Mp + p' x Mp')\\
+%Mym=1,35 x (75,0 x 2,89 + 5,0 x 4,24 + 5,0 x 19,66)\\
+%Mym=453,53 kN.m/m
+%
+%\subsection{Myr}
+%
+%\begin{figure}[!htb]
+%	\begin{center}
+%	    \includegraphics[max width=\textwidth]{memorial-tab-3.png}
+%	\end{center}
+%\end{figure}
+%
+%ML=3,51\\
+%Mp=4,34\\
+%Mp'=17,56\\
+%Myr= φ x (P x ML + p x Mp + p' x Mp')\\
+%Myr=1,35 x (75,0 x 3,51 + 5,0 x 4,34 + 5,0 x 17,56)\\
+%Myr=503,66 kN.m/m
+%
+%\subsection{Diagrama de envoltórios}
+%
+%\begin{figure}[!htb]
+%	\begin{center}
+%	    \legend{Mx devido à p}
+%	    \includegraphics[max width=\textwidth]{mx-devido-a-p.png}
+%	\end{center}
+%\end{figure}
+%
+%\begin{figure}[!htb]
+%	\begin{center}
+%	    \legend{My devido à p}
+%	    \includegraphics[max width=\textwidth]{my-devido-a-p.png}
+%	\end{center}
+%\end{figure}
+%
+%\end{apendicesenv}
+% ---
+%
+%
+% ----------------------------------------------------------
+% Anexos
+% ----------------------------------------------------------
+%
+% ---
+% Inicia os anexos
+% ---
+%\begin{anexosenv}
+%
+% Imprime uma página indicando o início dos anexos
+%\partanexos
+%
+% ---
+%\chapter{Tabelas da ABNT}\label{anexo:tabelasABNT}
+% ---
+%\begin{figure}[htb]
+%	\caption{\label{classe-agressividade-ambiental}Tabela de classes de agressividade ambiental.}
+%	\begin{center}
+%	    \includegraphics[max width=\textwidth]{classe-agressividade-ambiental.png}
+%	\end{center}
+%	\legend{Fonte: NBR 6118 \cite[p.~17]{NBR6118:2014}}
+%\end{figure}
+%
+%\begin{figure}[htb]
+%	\caption{\label{qualidade-do-concreto}Tabela da correspondência entre a classe de agressividade e a qualidade do concreto.}
+%	\begin{center}
+%	    \includegraphics[max width=\textwidth]{qualidade-do-concreto.png}
+%	\end{center}
+%	\legend{Fonte: NBR 6118 \cite[p.~18]{NBR6118:2014}}
+%\end{figure}
+%
+%\begin{figure}[htb]
+%	\caption{\label{cobrimento-nominal}Tabela da correspondência entre classe de agressividade ambiental e o cobrimento nominal para $\Delta$c = 10mm.}
+%	\begin{center}
+%	    \includegraphics[max width=\textwidth]{cobrimento-nominal.png}
+%	\end{center}
+%	\legend{Fonte: NBR 6118 \cite[p.~20]{NBR6118:2014}}
+%\end{figure}
+%
+%\end{anexosenv}
+
+%---------------------------------------------------------------------
+% INDICE REMISSIVO
+%---------------------------------------------------------------------
+\phantompart
+\printindex
+%---------------------------------------------------------------------
+
+\end{document}

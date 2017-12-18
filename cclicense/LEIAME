@@ -1,0 +1,103 @@
+# Copyright (C) 2013 Alexandre Hannud Abdo <abdo@member.fsf.org>
+# This work is licensed under the GNU GPL, version 3 or (at your option)
+# any later version. A copy of the license can be found here:
+# http://www.gnu.org/licenses/gpl
+
+Este é um template simples para incluir uma licença livre dentre as
+Licenças Creative Commons na forma de uma página em seu documento latex.
+
+Ele também inclui informação XMP para que o PDF gerado contenha uma
+versão legível por máquina da licença.
+
+Deve-se usar 'pdflatex' se quiser incluir a licença legível por máquina.
+
+
+Índice:
+*Instruções para gerar a página
+*Instruções para incluir os metadados XMP
+*Instruções finais para gerar o PDF
+
+
+==Instruções para gerar a página==
+
+Copie a pasta 'cclicense' para o diretório onde encontra-se seu
+documento LaTeX.
+
+Insira o código abaixo no preâmbulo do seu documento LaTeX:
+
+%
+% Pacotes necessários para cclicense
+\usepackage[utf8]{inputenc}
+\usepackage{epsfig}
+\usepackage[full]{textcomp}
+\usepackage[brazil]{babel}
+\usepackage{url}
+%
+
+Insira o código abaixo logo após as informações catalográficas,
+ou onde apropriado, trocando ANO e AUTOR pelos valores correspondentes:
+
+%
+% License page
+\newpage
+\input{cclicense/license}
+\CcLicenseBySaBr{ANO}{AUTOR}
+\newpage
+%
+
+O código acima usará a licençá CC-BY-SA-Brasil, mas você pode escolher
+qualquer uma dentre as quatro licenças livres com atribuição:
+
+CC-BY-Unported:     \CcLicenseByU
+CC-BY-SA-Unported:  \CcLicenseBySaU
+CC-BY-Brasil:       \CcLicenseByBr
+CC-BY-SA-Brasil:    \CcLicenseBySaBr
+
+
+==Instruções para incluir os metadados XMP==
+
+Adquira o pacote xmpincl da CTAN em:
+
+http://ctan.org/tex-archive/macros/latex/contrib/xmpincl
+
+Extraia-o no diretório cclicense e então execute num terminal:
+
+$ cd ./cclicense/xmpincl
+$ tex xmpincl.ins
+$ cd -
+
+Adicione os códigos latex abaixo no preâmbulo do seu documento LaTeX:
+
+% Necessários para os metadados XMP de cclicense
+\usepackage{cclicense/xmpincl/xmpincl}
+\includexmp{cclicense/metadata}
+%
+
+Agora acesse o gerador de licenças da Creative Commons:
+
+http://creativecommons.org/choose/?lang=pt_BR
+
+Escolha a licença que utilizará e preencha os seus dados, selecionando
+no item "Marca da licença" a opção "XMP", baixando o arquivo XMP gerado
+e salvando-o em "./cclicense/metadata.xmp".
+
+Alternativamente, ou se não estiver conectado à Internet, você pode
+copiar e editar um dos arquivos XMP do diretório exemplos, trocando os
+detalhes sobre a licença e substituindo as palavras AUTOR e ANO conforme
+aplicável.
+
+==Instruções finais para gerar o PDF==
+
+Pronto, é hora de rodar:
+
+$ pdflatex $SEU_DOCUMENTO.tex
+
+E abrir o resultado num visualizador de PDFs para conferir se a página
+gerada está correta, assim como nas propriedades do documento verificar
+se os metadados da licença foram incluídos.
+
+Por fim, dependendo do tipo de página e formatação que você usa, podem
+ser necessários alguns ajustes finos nos arquivos deste módulo.
+
+Ni!
+

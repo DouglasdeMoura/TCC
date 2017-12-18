@@ -1,0 +1,95 @@
+% Copyright (C) 2013 Alexandre Hannud Abdo <abdo@member.fsf.org>
+% This work is licensed under the GNU GPL, version 3 or (at your option)
+% any later version. A copy of the license can be found here:
+% http://www.gnu.org/licenses/gpl
+
+\input{./cclicense/tex/media.tex}
+\input{./cclicense/tex/understandings.tex}
+
+\newcommand{\CcLicenseVersion}[0]{%
+	3.0%
+}
+
+\newcommand{\CcLicenseUrl}[2]{% sharealike, brazil
+  \ifnum#1=0
+    \ifnum#2=0
+    	\url{http://creativecommons.org/licenses/by/3.0/}%
+    \else
+    	\url{http://creativecommons.org/licenses/by/3.0/br/}%
+    \fi
+  \else
+    \ifnum#2=0
+    	\url{http://creativecommons.org/licenses/by-sa/3.0/}%
+    \else
+    	\url{http://creativecommons.org/licenses/by-sa/3.0/br/}%
+    \fi
+  \fi
+}
+
+\newcommand{\CcLicenseName}[1]{% sharealike
+  \ifnum#1=0
+    Atribuição%
+  \else
+    Atribuição -- Compartilhamento pela mesma Licença%
+  \fi
+}
+
+\newcommand{\CcLicenseJur}[1]{% brazil
+  \ifnum#1=0
+  	Não Adaptada%
+  \else
+  	Brasil%
+  \fi
+}
+
+\newcommand{\CcLicenseByXBr}[4]{% year, author, sharealike, brazil
+
+  \begin{center}
+    Copyleft {\fontencoding{TS1}\fontfamily{lmr}\textcopyleft} #1 por #2
+  \end{center}
+
+  Esta obra é licenciada sob os termos da \emph{Licença Creative Commons \CcLicenseName{#3} \CcLicenseVersion{} \CcLicenseJur{#4}}. A licença está disponível em \CcLicenseUrl{#3}{#4}.
+
+  \begin{center}
+    \parbox{1.2cm}{\CcImageCc{width=1cm}}
+    \textbf{\CcLicenseName{#3}}
+  \end{center}
+
+  \subsection*{Você tem a liberdade de:}
+
+  \noindent
+  \textbf{Compartilhar} --- copiar, distribuir e transmitir a obra.
+
+  \noindent
+  \textbf{Recombinar} --- criar obras derivadas.
+
+  \subsection*{Sob as seguintes condições:}
+
+  \noindent
+  \parbox{1.5cm}{\CcImageBy{width=1cm}}
+  \parbox{10.5cm}{\textbf{Atribuição} --- Você deve creditar a obra da forma especificada pelo autor ou licenciante (mas não de maneira que sugira que estes concedem qualquer aval a você ou ao seu uso da obra).}
+
+  \ifnum#3=1
+    \vspace{0.5em}
+    \noindent
+    \parbox{1.5cm}{\CcImageSa{width=1cm}}
+    \parbox{10.5cm}{\textbf{Compartilhamento pela mesma licença} --- Se você alterar, transformar ou criar em cima desta obra, você poderá distribuir a obra resultante apenas sob a mesma licença, ou sob uma licença similar à presente.}
+  \fi
+
+  \CcUnderstandings{#3}{#4}
+  \clearpage
+}
+
+\newcommand{\CcLicenseByU}[2]{% year, author
+  \CcLicenseByXBr{#1}{#2}{0}{0}
+}
+\newcommand{\CcLicenseBySaU}[2]{% year, author
+  \CcLicenseByXBr{#1}{#2}{1}{0}
+}
+\newcommand{\CcLicenseByBr}[2]{% year, author
+  \CcLicenseByXBr{#1}{#2}{0}{1}
+}
+\newcommand{\CcLicenseBySaBr}[2]{% year, author
+  \CcLicenseByXBr{#1}{#2}{1}{1}
+}
+

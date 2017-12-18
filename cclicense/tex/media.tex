@@ -1,0 +1,18 @@
+% Copyright (C) 2013 Alexandre Hannud Abdo <abdo@member.fsf.org>
+% This work is licensed under the GNU GPL, version 3 or (at your option)
+% any later version. A copy of the license can be found here:
+% http://www.gnu.org/licenses/gpl
+
+\newcommand{\CcImageCc}[1]{% zoom
+	\includegraphics[#1]{cclicense/media/cc_cc_30}%
+}
+\newcommand{\CcImageBy}[1]{% zoom
+	\includegraphics[#1]{cclicense/media/cc_by_30}%
+}
+\newcommand{\CcImageSa}[1]{% zoom
+	\includegraphics[#1]{cclicense/media/cc_sa_30}%
+}
+\newcommand{\CcGroupBySa}[2]{% zoom, gap
+	\CcImageBy{#1}\hspace*{#2}\CcImageSa{#1}%
+}
+

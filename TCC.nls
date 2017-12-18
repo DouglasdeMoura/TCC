@@ -1,0 +1,101 @@
+\begin{thenomenclature} 
+
+ \nomgroup{A}
+
+  \item [{ACI}]\begingroup \textit{American Concrete Institute}\nomeqref {6.0}
+		\nompageref{17}
+  \item [{AFGC}]\begingroup \textit{Association Française de Genie Civil}\nomeqref {6.0}
+		\nompageref{13}
+  \item [{CADRF}]\begingroup Concreto de alto desempenho reforçado com fibras\nomeqref {6.0}
+		\nompageref{14}
+  \item [{CC}]\begingroup Concreto convencional\nomeqref {8.0}
+		\nompageref{47}
+  \item [{CCADRF}]\begingroup Compósito cimentício de alto desempenho reforçado com fibras\nomeqref {6.0}
+		\nompageref{14}
+  \item [{CCFA}]\begingroup Compósito cimentício fibroso de aço\nomeqref {6.0}
+		\nompageref{14}
+  \item [{CCR}]\begingroup Compósito Compacto Reforçado\nomeqref {6.0}
+		\nompageref{13}
+  \item [{CCUADRF}]\begingroup Compósito cimentício de ultra alto desempenho reforçado com fibras\nomeqref {6.0}
+		\nompageref{14}
+  \item [{CGCUAD}]\begingroup Compósito geopolimérico de concreto de ultra alto desempenho\nomeqref {6.0}
+		\nompageref{14}
+  \item [{CMSRF}]\begingroup Concreto multiescalável reforçado com fibras\nomeqref {6.0}
+		\nompageref{14}
+  \item [{CPR}]\begingroup Concreto de pós reativos\nomeqref {6.0}
+		\nompageref{14}
+  \item [{CRC}]\begingroup \textit{Compact Reinforced Composite}\nomeqref {6.0}
+		\nompageref{13}
+  \item [{CUAD}]\begingroup Concreto de ultra alto desempenho\nomeqref {2.0}
+		\nompageref{3}
+  \item [{CUADRF}]\begingroup Concreto de ultra alto desempenho reforçado com fibras\nomeqref {6.0}
+		\nompageref{14}
+  \item [{CUAR}]\begingroup Concreto de ultra alta resistência\nomeqref {6.0}
+		\nompageref{14}
+  \item [{CVUAD}]\begingroup Concreto de vidro de ultra alto desempenho\nomeqref {6.0}
+		\nompageref{14}
+  \item [{DPP}]\begingroup Densificado de Partículas Pequenas\nomeqref {6.0}
+		\nompageref{13}
+  \item [{DSP}]\begingroup \textit{Densified with Small Particles}\nomeqref {6.0}
+		\nompageref{13}
+  \item [{ELS}]\begingroup Estado limite de serviço\nomeqref {8.0}
+		\nompageref{45}
+  \item [{ELU}]\begingroup Estado limite último\nomeqref {8.0}
+		\nompageref{45}
+  \item [{FHWA}]\begingroup \textit{Federal Highway Administration}\nomeqref {7.0}
+		\nompageref{35}
+  \item [{FRHPC}]\begingroup \textit{Fiber-reinforced high-performance concrete}\nomeqref {6.0}
+		\nompageref{14}
+  \item [{GUHPC}]\begingroup \textit{Geopolymer composite ultra high performance concrete}\nomeqref {6.0}
+		\nompageref{14}
+  \item [{HPFRCC}]\begingroup \textit{High-performance fiber reinforced cement composite}\nomeqref {6.0}
+		\nompageref{14}
+  \item [{JSCE}]\begingroup \textit{Japan Society of Civil Engineers}\nomeqref {6.0}
+		\nompageref{13}
+  \item [{LMD}]\begingroup Livre de Macros Defeitos\nomeqref {6.0}
+		\nompageref{13}
+  \item [{MDF}]\begingroup \textit{Macro Deffect Free}\nomeqref {6.0}
+		\nompageref{13}
+  \item [{MIT}]\begingroup \textit{Massachusetts Institute of Technology}\nomeqref {7.0}
+		\nompageref{35}
+  \item [{MSFRC}]\begingroup \textit{Multi-scale fiber-reinforced concrete}\nomeqref {6.0}
+		\nompageref{14}
+  \item [{RPC}]\begingroup \textit{Reactive powder concrete}\nomeqref {6.0}
+		\nompageref{14}
+  \item [{SFCBC}]\begingroup \textit{Steel fibrous cement-based composite}\nomeqref {6.0}
+		\nompageref{14}
+  \item [{UHPFRC}]\begingroup \textit{Ultra-high performance fiber-reinforced concrete}\nomeqref {6.0}
+		\nompageref{14}
+  \item [{UHPFRCC}]\begingroup \textit{Ultra-high performance fiber-reinforced cementitious composite}\nomeqref {6.0}
+		\nompageref{14}
+  \item [{UHPGC}]\begingroup \textit{Ultra-high performance glass concrete}\nomeqref {6.0}
+		\nompageref{14}
+  \item [{UHSC}]\begingroup \textit{Ultra-high strength concrete}\nomeqref {6.0}
+		\nompageref{14}
+
+ \nomgroup{S}
+
+  \item [{$\text{kg/m}^3$}]\begingroup Quilograma por metro cúbico\nomeqref {6.0}
+		\nompageref{14}
+  \item [{a/c}]\begingroup Relação água/cimento\nomeqref {6.0}
+		\nompageref{14}
+  \item [{fck}]\begingroup Resistência característica do concreto\nomeqref {6.0}
+		\nompageref{17}
+  \item [{GPa}]\begingroup Gigapascal\nomeqref {6.0}\nompageref{14}
+  \item [{kg/MNm}]\begingroup Quilograma por meganewton metro\nomeqref {6.0}
+		\nompageref{14}
+  \item [{kN}]\begingroup Quilonewton\nomeqref {7.0}\nompageref{39}
+  \item [{kN/$\text{m}^2$}]\begingroup Quilonewton por metro quadrado\nomeqref {6.0}
+		\nompageref{17}
+  \item [{m/$\text{s}^2$}]\begingroup Metro por segundo ao quadrado\nomeqref {6.0}
+		\nompageref{17}
+  \item [{m/s}]\begingroup Metro por segundo\nomeqref {6.0}
+		\nompageref{17}
+  \item [{mm}]\begingroup Milímetro\nomeqref {6.0}\nompageref{14}
+  \item [{MPa}]\begingroup Megapascal\nomeqref {6.0}\nompageref{12}
+  \item [{{\textmu}m/m/\textsuperscript{\degree}C}]\begingroup Micrometro por metro por grau Celsius\nomeqref {6.0}
+		\nompageref{17}
+  \item [{{\textmu}m/m/MPa}]\begingroup Micrometro por metro por megapascal\nomeqref {6.0}
+		\nompageref{17}
+
+\end{thenomenclature}
