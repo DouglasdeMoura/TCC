@@ -8,7 +8,7 @@ Para gerar a lista de abreviações e símbolos, utilizei o pacote `nomenclature
 
 `\nomenclature[A]{LMD}{Livre de Macros Defeitos}`
 
-E para adicionar um ítem à lista de símbolos:
+E para adicionar um item à lista de símbolos:
 
 `\nomenclature[S]{kg}{Quilograma}`
 
