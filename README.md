@@ -12,4 +12,4 @@ E para adicionar um ítem à lista de símbolos:
 
 `\nomenclature[S]{kg}{Quilograma}`
 
-Eu recomendo a utilização de um editor online como o ShareLatex ou Overleaf, que já contém todos os pacotes necessários para o correto funcionamento deste modelo instalados.
+Eu recomendo a utilização de um editor online como o ShareLatex ou Overleaf, que já contém todos os pacotes necessários para o correto funcionamento deste modelo.
